@@ -55,17 +55,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String text = 'Bienvenida a Empower She';
 
-  void _incrementCounter() {
+  void _changeText() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      text = 'no eres bienvenida';
     });
+    print('Text changed');
   }
 
   @override
@@ -82,10 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Bienvenida a EmpowerShe App!'),
-            Image.network(
-              'https://i.pinimg.com/736x/23/eb/45/23eb45cffc268283ee6e44612fa171a2.jpg',
-              width: 200,
+            Text(text),
+            Image.asset(
+              'lib/assets/imageedummy.jpg',
+              width: 100,
             ),
             Container(
               height: 150,
@@ -98,7 +94,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 50,
                       width: 110,
                       color: Colors.deepPurpleAccent,
-                      child: Center(child: Text('Curso 1')),
+                      child: Center(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Curso 1'),
+                          Image.asset('lib/assets/imageedummy.jpg', width: 50)
+                        ],
+                      )),
                     ),
                   ),
                   Padding(
@@ -107,7 +110,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 50,
                       width: 110,
                       color: Colors.blue,
-                      child: Center(child: Text('Curso 2')),
+                      child: Center(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Curso 2'),
+                          Image.asset('lib/assets/imageedummy.jpg', width: 50)
+                        ],
+                      )),
                     ),
                   ),
                   Padding(
@@ -123,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: _changeText,
                 child: Text(
                   'Press me',
                   style: TextStyle(color: Colors.purple),
