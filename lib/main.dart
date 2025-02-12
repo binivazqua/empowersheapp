@@ -1,3 +1,4 @@
+import 'package:dummy_app_empoweshe/infopage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -41,6 +42,22 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        backgroundColor: Color.fromARGB(255, 231, 243, 250),
+        child: ListView(
+          children: [
+            DrawerHeader(child: Text('O P C I O N E S')),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text('About Us'),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => InfoPage()));
+              },
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 220, 134, 231),
         title: const Text('EmpowerShe App'),
