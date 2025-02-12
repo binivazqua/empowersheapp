@@ -1,4 +1,3 @@
-import 'package:dummy_app_empoweshe/dummy_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,27 +7,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -39,16 +22,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -56,135 +29,156 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String text = 'Bienvenida a Empower She';
+  String text = 'Bienvenidas a EmpowerShe';
 
   void _changeText() {
     setState(() {
-      text = 'no eres bienvenida';
+      text = 'Enjoy your journey';
     });
     print('Text changed');
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: Colors.deepPurple,
-        child: ListView(children: [
-          DrawerHeader(
-            child: Text('Menu'),
-            decoration: BoxDecoration(color: Colors.deepPurple),
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 220, 134, 231),
+        title: const Text('EmpowerShe App'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.settings),
+            color: Colors.white,
           ),
-          ListTile(
-            title: Text('Usuario'),
-            leading: Icon(Icons.person),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => DummyPage()));
-            },
-          )
-        ]),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.person),
+            color: Colors.white,
+          ),
+        ],
       ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(text),
-            Image.asset(
-              'lib/assets/imageedummy.jpg',
-              width: 100,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30),
+              child: Image.asset(
+                'lib/assets/png_icon_color_purple.png',
+                width: 80,
+              ),
             ),
-            Container(
-              height: 150,
+            Text(
+              text,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 110,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 50,
-                      width: 110,
-                      color: Colors.deepPurpleAccent,
-                      child: Center(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Curso 1'),
-                          Image.asset('lib/assets/imageedummy.jpg', width: 50)
-                        ],
-                      )),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 50,
-                      width: 110,
-                      color: Colors.blue,
-                      child: Center(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Curso 2'),
-                          Image.asset('lib/assets/imageedummy.jpg', width: 50)
-                        ],
-                      )),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 50,
-                      width: 110,
-                      color: Colors.deepPurple,
-                      child: Center(child: Text('Curso 3')),
-                    ),
-                  )
+                  _buildCourseCard(context, 'STEM', 'Learn about STEM fields!'),
+                  _buildCourseCard(context, 'How To', 'Guides and Tutorials'),
+                  _buildCourseCard(context, 'Advances', 'Latest Innovations'),
                 ],
               ),
             ),
+            SizedBox(
+              height: 30,
+            ),
             ElevatedButton(
-                onPressed: _changeText,
-                child: Text(
-                  'Press me',
-                  style: TextStyle(color: Colors.purple),
-                ))
+              onPressed: () {
+                print('Learn more button pressed');
+              },
+              child: const Text(
+                'Learn more here!',
+                style: TextStyle(color: Colors.pink),
+              ),
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.deepPurple,
-        child: Icon(
-          Icons.favorite,
-          color: Colors.white,
+        onPressed: _changeText,
+        backgroundColor: const Color.fromARGB(255, 220, 134, 231),
+        child: const Icon(Icons.favorite, color: Colors.white),
+      ),
+    );
+  }
+
+  Widget _buildCourseCard(
+      BuildContext context, String title, String description) {
+    return GestureDetector(
+      onTap: () {
+        // Navigate to CourseDetailPage when tapped
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                CourseDetailPage(courseTitle: title, description: description),
+          ),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          height: 120,
+          width: 100,
+          color: Colors.pink.shade300,
+          child: Center(
+            child: Text(title, style: const TextStyle(color: Colors.white)),
+          ),
         ),
       ),
+    );
+  }
+}
+
+// New page that opens when a course is clicked
+class CourseDetailPage extends StatelessWidget {
+  final String courseTitle;
+  final String description;
+
+  const CourseDetailPage(
+      {super.key, required this.courseTitle, required this.description});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.settings),
-            color: Colors.white,
+        backgroundColor: Colors.pink,
+        title: Text(courseTitle),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                courseTitle,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                description,
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context); // Go back to home
+                },
+                child: const Text('Go Back'),
+              ),
+            ],
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.person),
-            color: Colors.white,
-          )
-        ],
-        backgroundColor: Colors.purpleAccent,
-        title: Text(
-          'EmpowerShe App',
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black),
         ),
       ),
     );

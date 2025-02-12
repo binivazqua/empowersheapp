@@ -54,6 +54,7 @@ flutter:
 
   assets:
     - lib/assets/
+    - lib/assets/png_icon_color_purple.png
 
 
   # The following line ensures that the Material Icons font is
