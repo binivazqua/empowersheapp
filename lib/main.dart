@@ -1,3 +1,4 @@
+import 'package:dummy_app_empoweshe/dummy_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -73,6 +74,23 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      drawer: Drawer(
+        backgroundColor: Colors.deepPurple,
+        child: ListView(children: [
+          DrawerHeader(
+            child: Text('Menu'),
+            decoration: BoxDecoration(color: Colors.deepPurple),
+          ),
+          ListTile(
+            title: Text('Usuario'),
+            leading: Icon(Icons.person),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => DummyPage()));
+            },
+          )
+        ]),
+      ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
