@@ -1,7 +1,15 @@
+import 'package:dummy_app_empoweshe/constants/colors.dart';
 import 'package:dummy_app_empoweshe/infopage.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  //initialize hive
+  await Hive.initFlutter();
+
+  // open box
+  var box = await Hive.openBox('mybox');
   runApp(const MyApp());
 }
 
@@ -52,14 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('About Us'),
               onTap: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => InfoPage()));
+                    .push(MaterialPageRoute(builder: (context) => infoPage()));
               },
             )
           ],
         ),
       ),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 220, 134, 231),
+        backgroundColor: flamingo,
         title: const Text('EmpowerShe App'),
         actions: [
           IconButton(
@@ -93,15 +101,23 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 20,
             ),
-            SizedBox(
-              height: 110,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  _buildCourseCard(context, 'STEM', 'Learn about STEM fields!'),
-                  _buildCourseCard(context, 'How To', 'Guides and Tutorials'),
-                  _buildCourseCard(context, 'Advances', 'Latest Innovations'),
-                ],
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 25),
+                child: SizedBox(
+                  height: 110,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      _buildCourseCard(
+                          context, 'STEM', 'Learn about STEM fields!'),
+                      _buildCourseCard(
+                          context, 'How To', 'Guides and Tutorials'),
+                      _buildCourseCard(
+                          context, 'Advances', 'Latest Innovations'),
+                    ],
+                  ),
+                ),
               ),
             ),
             SizedBox(
