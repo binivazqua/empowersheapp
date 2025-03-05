@@ -1,5 +1,6 @@
 import 'package:dummy_app_empoweshe/constants/colors.dart';
 import 'package:dummy_app_empoweshe/infopage.dart';
+import 'package:dummy_app_empoweshe/stem_courses_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -61,6 +62,14 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => infoPage()));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text('STEM COURSES'),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Courses()));
               },
             )
           ],
