@@ -1,6 +1,9 @@
 import 'package:dummy_app_empoweshe/constants/colors.dart';
+import 'package:dummy_app_empoweshe/course_detail_page.dart';
 import 'package:dummy_app_empoweshe/infopage.dart';
+import 'package:dummy_app_empoweshe/responsive.dart';
 import 'package:dummy_app_empoweshe/stem_courses_page.dart';
+import 'package:dummy_app_empoweshe/widgets/course_card.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -20,13 +23,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const MyHomePage(title: 'Flutter Demo Home Page'));
+    //ResponsivePage());
   }
 }
 
@@ -113,17 +116,20 @@ class _MyHomePageState extends State<MyHomePage> {
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(left: 25),
-                child: SizedBox(
-                  height: 110,
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 380,
+                  height: 150,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      _buildCourseCard(
-                          context, 'STEM', 'Learn about STEM fields!'),
-                      _buildCourseCard(
-                          context, 'How To', 'Guides and Tutorials'),
-                      _buildCourseCard(
-                          context, 'Advances', 'Latest Innovations'),
+                      CourseCard(
+                          title: 'STEM',
+                          description: 'Learn about STEM fields!'),
+                      CourseCard(
+                          title: 'How To', description: 'Guides and Tutorials'),
+                      CourseCard(
+                          title: 'Advances', description: 'Latest Innovations'),
                     ],
                   ),
                 ),
@@ -135,6 +141,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: () {
                 print('Learn more button pressed');
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ResponsivePage()));
               },
               child: const Text(
                 'Learn more here!',
@@ -151,78 +159,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
-  Widget _buildCourseCard(
-      BuildContext context, String title, String description) {
-    return GestureDetector(
-      onTap: () {
-        // Navigate to CourseDetailPage when tapped
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                CourseDetailPage(courseTitle: title, description: description),
-          ),
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          height: 120,
-          width: 100,
-          color: Colors.pink.shade300,
-          child: Center(
-            child: Text(title, style: const TextStyle(color: Colors.white)),
-          ),
-        ),
-      ),
-    );
-  }
 }
 
-// New page that opens when a course is clicked
-class CourseDetailPage extends StatelessWidget {
-  final String courseTitle;
-  final String description;
-
-  const CourseDetailPage(
-      {super.key, required this.courseTitle, required this.description});
+class mobileHomePage extends StatefulWidget {
+  const mobileHomePage();
 
   @override
+  State<mobileHomePage> createState() => _mobileHomePageState();
+}
+
+class _mobileHomePageState extends State<mobileHomePage> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.pink,
-        title: Text(courseTitle),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                courseTitle,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                description,
-                style: const TextStyle(fontSize: 16),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context); // Go back to home
-                },
-                child: const Text('Go Back'),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    // TODO: implement build
+    return Scaffold();
   }
 }
