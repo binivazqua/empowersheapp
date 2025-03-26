@@ -1,7 +1,10 @@
 import 'package:dummy_app_empoweshe/constants/colors.dart';
 import 'package:dummy_app_empoweshe/course_detail_page.dart';
 import 'package:dummy_app_empoweshe/infopage.dart';
-import 'package:dummy_app_empoweshe/responsive.dart';
+import 'package:dummy_app_empoweshe/responsive/desktopBody.dart';
+import 'package:dummy_app_empoweshe/responsive/mobileBody.dart';
+import 'package:dummy_app_empoweshe/responsive/responsive.dart';
+import 'package:dummy_app_empoweshe/responsive/responsive_layout.dart';
 import 'package:dummy_app_empoweshe/stem_courses_page.dart';
 import 'package:dummy_app_empoweshe/widgets/course_card.dart';
 import 'package:flutter/material.dart';
@@ -94,6 +97,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      body: ResponsiveLayout(
+          mobileBody: Mobilebody(), desktopBody: desktopBody()),
+      /*
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -156,22 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _changeText,
         backgroundColor: const Color.fromARGB(255, 220, 134, 231),
         child: const Icon(Icons.favorite, color: Colors.white),
-      ),
+      ),*/
     );
-  }
-}
-
-class mobileHomePage extends StatefulWidget {
-  const mobileHomePage();
-
-  @override
-  State<mobileHomePage> createState() => _mobileHomePageState();
-}
-
-class _mobileHomePageState extends State<mobileHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold();
   }
 }
