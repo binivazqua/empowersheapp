@@ -5,6 +5,7 @@ import 'package:dummy_app_empoweshe/responsive/desktopBody.dart';
 import 'package:dummy_app_empoweshe/responsive/mobileBody.dart';
 import 'package:dummy_app_empoweshe/responsive/responsive.dart';
 import 'package:dummy_app_empoweshe/responsive/responsive_layout.dart';
+import 'package:dummy_app_empoweshe/responsive/videoplayer_page.dart';
 import 'package:dummy_app_empoweshe/stem_courses_page.dart';
 import 'package:dummy_app_empoweshe/widgets/course_card.dart';
 import 'package:flutter/material.dart';
@@ -66,8 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: Icon(Icons.info),
               title: Text('About Us'),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => infoPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => VideoPlayerTestPage()));
               },
             ),
             ListTile(
@@ -99,70 +100,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: ResponsiveLayout(
           mobileBody: Mobilebody(), desktopBody: desktopBody()),
-      /*
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: Image.asset(
-                'lib/assets/png_icon_color_purple.png',
-                width: 80,
-              ),
-            ),
-            Text(
-              text,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 25),
-                child: Container(
-                  alignment: Alignment.center,
-                  width: 380,
-                  height: 150,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      CourseCard(
-                          title: 'STEM',
-                          description: 'Learn about STEM fields!'),
-                      CourseCard(
-                          title: 'How To', description: 'Guides and Tutorials'),
-                      CourseCard(
-                          title: 'Advances', description: 'Latest Innovations'),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                print('Learn more button pressed');
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ResponsivePage()));
-              },
-              child: const Text(
-                'Learn more here!',
-                style: TextStyle(color: Colors.pink),
-              ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _changeText,
-        backgroundColor: const Color.fromARGB(255, 220, 134, 231),
-        child: const Icon(Icons.favorite, color: Colors.white),
-      ),*/
     );
   }
 }

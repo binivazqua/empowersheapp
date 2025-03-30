@@ -1,3 +1,4 @@
+import 'package:dummy_app_empoweshe/assetvideoplayer.dart';
 import 'package:dummy_app_empoweshe/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -46,3 +47,24 @@ class _infoPageState extends State<infoPage> {
     );
   }
 }
+
+/*
+  Scaffold(
+      backgroundColor: sky,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          spacing: 5,
+          children: [
+            Text('Probando bases de datos!'),
+            ElevatedButton(onPressed: writeData, child: Text('Add Data')),
+            ElevatedButton(onPressed: () {}, child: Text('Read Data')),
+            ElevatedButton(onPressed: () {}, child: Text('Delete Data'))
+          ],
+        ),
+      ),
+    );
+
+
+ */

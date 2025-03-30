@@ -26,7 +26,7 @@ class _desktopBodyState extends State<desktopBody> {
               ),
             ),
             Text(
-              'text',
+              'Empower She',
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(

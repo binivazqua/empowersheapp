@@ -5,6 +5,8 @@ class VideoPlayerWidget extends StatelessWidget {
   final VideoPlayerController controller;
   const VideoPlayerWidget({super.key, required this.controller});
 
+  // Build the UI para el video.
+
   @override
   Widget build(BuildContext context) =>
       controller != null && controller.value.isInitialized

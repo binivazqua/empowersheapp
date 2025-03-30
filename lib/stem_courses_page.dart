@@ -43,10 +43,10 @@ class Courses extends StatelessWidget {
                               color: Colors.white)),
                     ),
                     SizedBox(
-                      height: 500,
+                      height: 300,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
-                        children: [courseCard(), courseCard()],
+                        children: [courseCard(), courseCard(), courseCard()],
                       ),
                     ),
                     SizedBox(height: 20),
@@ -154,7 +154,7 @@ class Courses extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 230,
+        height: 180,
         width: 180,
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 119, 48, 163),

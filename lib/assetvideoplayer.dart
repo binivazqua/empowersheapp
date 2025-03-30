@@ -8,6 +8,7 @@ class AssetPlayerWidget extends StatefulWidget {
   @override
   State<AssetPlayerWidget> createState() => _AssetPlayerWidgetState();
 }
+// Widget que carga el video y controla su reproducción.
 
 class _AssetPlayerWidgetState extends State<AssetPlayerWidget> {
   late VideoPlayerController controller;
