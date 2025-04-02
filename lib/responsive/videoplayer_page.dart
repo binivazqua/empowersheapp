@@ -105,6 +105,10 @@ class _VideoPlayerTestPageState extends State<VideoPlayerTestPage> {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  Visibility(
+                    child: _buildControls(),
+                    visible: ver_resumen,
+                  ),
                   ElevatedButton(
                       onPressed: () {
                         setState(() {
@@ -113,10 +117,6 @@ class _VideoPlayerTestPageState extends State<VideoPlayerTestPage> {
                         });
                       },
                       child: Text('Ver Resumen')),
-                  Visibility(
-                    child: _buildControls(),
-                    visible: ver_resumen,
-                  )
                 ],
               )
             : const CircularProgressIndicator(),
