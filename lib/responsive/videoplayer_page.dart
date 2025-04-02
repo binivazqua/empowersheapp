@@ -25,6 +25,7 @@ class VideoPlayerTestPage extends StatefulWidget {
 
 class _VideoPlayerTestPageState extends State<VideoPlayerTestPage> {
   late VideoPlayerController _controller;
+  bool ver_resumen = false;
 
   @override
   void initState() {
@@ -87,19 +88,35 @@ class _VideoPlayerTestPageState extends State<VideoPlayerTestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Video Player Test")),
+      appBar: AppBar(
+        title: const Text("Empower She"),
+      ),
       body: Center(
         child: _controller.value.isInitialized
             ? Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  AspectRatio(
-                    // showcase video
-                    aspectRatio: _controller.value.aspectRatio,
-                    child: VideoPlayer(_controller),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: AspectRatio(
+                      // showcase video
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: VideoPlayer(_controller),
+                    ),
                   ),
                   const SizedBox(height: 20),
-                  _buildControls(),
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          ver_resumen = true;
+                          print(ver_resumen);
+                        });
+                      },
+                      child: Text('Ver Resumen')),
+                  Visibility(
+                    child: _buildControls(),
+                    visible: ver_resumen,
+                  )
                 ],
               )
             : const CircularProgressIndicator(),
