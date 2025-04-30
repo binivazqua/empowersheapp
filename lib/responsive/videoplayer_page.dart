@@ -85,6 +85,12 @@ class _VideoPlayerTestPageState extends State<VideoPlayerTestPage> {
     return '$minutes:$seconds';
   }
 
+  bool isPressed_1 = false;
+  bool isPressed_2 = false;
+  bool isPressed_3 = false;
+  bool isPressed_4 = false;
+  bool isPressed_5 = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,13 +101,18 @@ class _VideoPlayerTestPageState extends State<VideoPlayerTestPage> {
         child: _controller.value.isInitialized
             ? Column(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: AspectRatio(
-                      // showcase video
-                      aspectRatio: _controller.value.aspectRatio,
-                      child: VideoPlayer(_controller),
+                    child: Container(
+                      width: 1000,
+                      child: AspectRatio(
+                        // showcase video
+                        aspectRatio: _controller.value.aspectRatio,
+                        child: VideoPlayer(_controller),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -117,6 +128,84 @@ class _VideoPlayerTestPageState extends State<VideoPlayerTestPage> {
                         });
                       },
                       child: Text('Ver Resumen')),
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Column(
+                      spacing: 10,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Título de la lección',
+                          style: TextStyle(fontSize: 50),
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isPressed_1 = !isPressed_1;
+                                  });
+                                  print(isPressed_1.toString());
+                                },
+                                icon: Icon(
+                                  isPressed_1
+                                      ? Icons.star_rate_rounded
+                                      : Icons.star_border_rounded,
+                                  size: 40,
+                                )),
+                            IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isPressed_2 = !isPressed_2;
+                                  });
+                                  print(isPressed_2.toString());
+                                },
+                                icon: Icon(
+                                  isPressed_2
+                                      ? Icons.star_rate_rounded
+                                      : Icons.star_border_rounded,
+                                  size: 40,
+                                )),
+                            IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isPressed_3 = !isPressed_3;
+                                  });
+                                  print(isPressed_3.toString());
+                                },
+                                icon: Icon(
+                                  isPressed_3
+                                      ? Icons.star_rate_rounded
+                                      : Icons.star_border_rounded,
+                                  size: 40,
+                                )),
+                            IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isPressed_4 = !isPressed_4;
+                                  });
+                                  print(isPressed_4.toString());
+                                },
+                                icon: Icon(
+                                  isPressed_5
+                                      ? Icons.star_rate_rounded
+                                      : Icons.star_border_rounded,
+                                  size: 40,
+                                )),
+                          ],
+                        ),
+                        Text(
+                          'Tiempo estimado',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        Text(
+                          'Nivel educativo estimado',
+                          style: TextStyle(fontSize: 30),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               )
             : const CircularProgressIndicator(),
